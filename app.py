@@ -23,8 +23,7 @@ st.set_page_config(
     layout="wide",
 )
 
-
-st.title("📐 Interpolación de Newton — Diferencias Divididas")
+st.title("Interpolación de Newton — Diferencias Divididas")
 st.markdown(
     "Construye el polinomio interpolante paso a paso a partir de puntos definidos por el usuario."
 )

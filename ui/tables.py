@@ -1,12 +1,26 @@
-"""Tablas y gráficos auxiliares."""
-
 from __future__ import annotations
 
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
+from core.newton import build_error_rows
 
+def format_table_number(value: float, max_decimals: int = 6) -> str:
+    """
+    Formatea números para tablas:
+    - Si es entero, muestra 1 en vez de 1.000000.
+    - Si tiene decimales, muestra solo los decimales necesarios.
+    """
+    if np.isnan(value):
+        return ""
+
+    value = float(value)
+
+    if abs(value - round(value)) < 1e-10:
+        return str(int(round(value)))
+
+    return f"{value:.{max_decimals}f}".rstrip("0").rstrip(".")
 
 def render_dd_table(
     xs: np.ndarray,
@@ -22,11 +36,11 @@ def render_dd_table(
     rows = []
 
     for i in range(n_points):
-        row = {"xᵢ": f"x{i} = {xs[i]:.6g}"}
+        row = {"xᵢ": f"x{i} = {format_table_number(xs[i])}"}
 
         for j in range(n_points):
             value = dd_table[i, j]
-            row[f"Ord {j}"] = round(float(value), 6) if not np.isnan(value) else ""
+            row[f"Ord {j}"] = format_table_number(value)
 
         rows.append(row)
 
@@ -140,3 +154,41 @@ def render_coefficients_bar_chart(
     )
 
     st.plotly_chart(fig_bar, use_container_width=True)
+
+def render_error_table(
+    xs: np.ndarray,
+    ys: np.ndarray,
+    coeffs: np.ndarray,
+    num_terms: int,
+) -> None:
+    """
+    Muestra el error iterativo de Newton en cada paso.
+
+    El error se calcula como:
+    e_k = y_k - P_{k-1}(x_k)
+    """
+    st.subheader("Error iterativo por cada punto agregado")
+
+    rows = build_error_rows(xs, ys, coeffs)
+
+    formatted_rows = []
+
+    for row in rows:
+        iteration = row["Iteración"]
+
+        formatted_rows.append(
+            {
+                "Iteración": iteration,
+                "Punto agregado": row["Punto agregado"],
+                "Polinomio anterior": row["P anterior"],
+                "Predicción": format_table_number(row["Predicción"]),
+                "Valor real": format_table_number(row["Valor real"]),
+                "Error": format_table_number(row["Error"]),
+                "|Error|": format_table_number(row["|Error|"]),
+                "Producto": format_table_number(row["Producto"]),
+                "aₖ": format_table_number(row["aₖ = Error / Producto"]),
+                "Estado": "✅ usado" if iteration < num_terms else "⬜ pendiente",
+            }
+        )
+
+    df_errors = pd.DataFrame(formatted_rows)

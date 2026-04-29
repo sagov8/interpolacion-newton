@@ -60,7 +60,7 @@ def render_algorithm_explanation() -> None:
     """
     Explica el algoritmo iterativo de Newton.
     """
-    with st.expander("🧠 Explicación del algoritmo iterativo"):
+    with st.expander("Explicación del algoritmo iterativo"):
         st.markdown(
             """
 El método de interpolación de Newton construye el polinomio de forma incremental.
@@ -203,14 +203,6 @@ for k in range(num_terms):
         st.markdown(
             """
 Así el polinomio se evalúa en orden, término por término.
-
----
-
-### Complejidad
-
-Construir la tabla cuesta `O(n²)`.
-
-Evaluar el polinomio en un punto cuesta `O(n)`.
             """
         )
 
@@ -222,7 +214,7 @@ def render_manual_iteration(
     """
     Muestra una tabla con el cálculo manual de cada diferencia dividida.
     """
-    with st.expander("📋 Ver iteración manual detallada"):
+    with st.expander("Ver iteración manual detallada"):
         st.markdown("### Cálculo de cada diferencia dividida")
 
         rows = build_iteration_rows(xs, dd_table)
