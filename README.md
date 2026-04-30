@@ -2,7 +2,7 @@
 
 Una aplicación interactiva para visualizar y aprender sobre el **método de interpolación de Newton**, con una interfaz gráfica que facilita la comprensión de este importante método numérico.
 
-## 📋 Descripción
+## Descripción
 
 Este proyecto implementa el método de interpolación de Newton, un algoritmo fundamental en análisis numérico para aproximar funciones a partir de puntos de datos. La aplicación proporciona:
 
@@ -12,7 +12,7 @@ Este proyecto implementa el método de interpolación de Newton, un algoritmo fu
 - **Explicaciones detalladas** del proceso paso a paso
 - **Presets predefinidos** para fácil experimentación
 
-## 🚀 Características
+## Características
 
 - Interfaz intuitiva y responsiva
 - Gráficos interactivos para visualizar interpolaciones
@@ -21,7 +21,7 @@ Este proyecto implementa el método de interpolación de Newton, un algoritmo fu
 - Explicaciones educativas del algoritmo
 - Presets de ejemplo para aprendizaje rápido
 
-## 📦 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 interpolacion-newton/
@@ -38,12 +38,12 @@ interpolacion-newton/
     └── tables.py         # Tablas de datos
 ```
 
-## 🔧 Requisitos
+## Requisitos
 
 - Python 3.7+
 - Las dependencias están listadas en `requirements.txt`
 
-## 💻 Instalación
+## Instalación
 
 1. Clona el repositorio:
 ```bash
@@ -63,7 +63,7 @@ source venv/bin/activate  # En Linux/Mac
 pip install -r requirements.txt
 ```
 
-## ▶️ Uso
+## Uso
 
 Ejecuta la aplicación principal:
 
@@ -91,7 +91,7 @@ $$P_n(x) = f[x_0] + f[x_0,x_1](x-x_0) + f[x_0,x_1,x_2](x-x_0)(x-x_1) + \ldots$$
 
 Donde $f[x_i, x_{i+1}, \ldots]$ representa las diferencias divididas.
 
-## 🎓 Aplicaciones Educativas
+## Aplicaciones Educativas
 
 Este proyecto es útil para:
 - Estudiantes de ingeniería y matemáticas
@@ -107,7 +107,7 @@ Este proyecto fue creado con fines educativos.
 
 Santiago Vivas
 
-## 📧 Contacto
+## Contacto
 
 Para preguntas o sugerencias, por favor abre un _issue_ en el repositorio.
 
