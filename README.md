@@ -87,7 +87,9 @@ El método de Newton utiliza diferencias divididas para construir un polinomio i
 
 ### Polinomio de Newton
 
-$$P_n(x) = f[x_0] + f[x_0,x_1](x-x_0) + f[x_0,x_1,x_2](x-x_0)(x-x_1) + \ldots$$
+```math
+P_n(x) = \sum_{k=0}^{n} f[x_0,\ldots,x_k] \prod_{j=0}^{k-1}(x-x_j)
+```
 
 Donde $f[x_i, x_{i+1}, \ldots]$ representa las diferencias divididas.
 
